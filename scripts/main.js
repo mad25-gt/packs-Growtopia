@@ -1,69 +1,65 @@
-// Konfigurasi Pack
-const packs = {
-  msurg: {
-    name: "MSURG",
-    items: ["Magic Stone", "Starboard", "Uranium", "Ruby", "Golden"],
-    modal: 24
-  },
-  surg: {
-    name: "SURG",
-    items: ["Stone", "Uranium", "Ruby", "Golden"],
-    modal: 18
-  },
-  lgrid: {
-    name: "LGRID",
-    items: ["Ladder", "Grid", "Icy", "Dirt"],
-    modal: 12
-  }
-};
-
-// Inisialisasi
-document.addEventListener("DOMContentLoaded", () => {
-  loadPack("msurg");
-  setupEventListeners();
-});
-
-function loadPack(packId) {
-  const pack = packs[packId];
-  const itemGrid = document.getElementById(`${packId}-pack`);
-  
-  // Set modal default
-  document.getElementById("modal").value = pack.modal;
-  
-  // Generate item cards
-  itemGrid.innerHTML = pack.items.map(item => `
-    <div class="item-card">
-      <h3>${item}</h3>
-      <input type="text" data-item="${item}" placeholder="Qty/WL" class="price-input">
-      <div class="item-total" data-item="${item}-total">0 WL</div>
-    </div>
-  `).join("");
-  
-  // Aktifkan input listeners
-  document.querySelectorAll(".price-input").forEach(input => {
-    input.addEventListener("input", calculateProfit);
-  });
+:root {
+  --bg-dark: #1a1a2e;
+  --bg-card: #16213e;
+  --text-light: #e6e6e6;
+  --accent: #4cc9f0;
+  --profit: #4ade80;
+  --loss: #f87171;
 }
 
-function calculateProfit() {
-  // Implementasi perhitungan profit
-  // (Mirip dengan contoh sebelumnya)
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 20px;
 }
 
-function setupEventListeners() {
-  // Switch tema
-  document.getElementById("themeToggle").addEventListener("click", () => {
-    document.documentElement.setAttribute("data-theme", 
-      document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark"
-    );
-  });
-  
-  // Switch pack
-  document.querySelectorAll(".pack-btn").forEach(btn => {
-    btn.addEventListener("click", function() {
-      document.querySelectorAll(".pack-btn").forEach(b => b.classList.remove("active"));
-      this.classList.add("active");
-      loadPack(this.dataset.pack);
-    });
-  });
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: var(--bg-card);
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+.input-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+input {
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid #444;
+  border-radius: 4px;
+  color: var(--text-light);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #444;
+}
+
+th {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.price-input {
+  width: 80px;
+}
+
+.results h2 {
+  margin: 0.5rem 0;
 }
