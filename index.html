@@ -3,36 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Growtopia Profit Calculator</title>
+  <title>MSURG Pack Profit Calculator</title>
   <link rel="stylesheet" href="styles/main.css">
-  <link rel="icon" href="assets/icons/gt-icon.png">
 </head>
 <body>
   <div class="container">
-    <header>
-      <h1><img src="assets/icons/wl-icon.png" alt="WL"> Pack Profit Calculator</h1>
-      <div class="theme-switcher">
-        <button id="themeToggle">🌓</button>
-      </div>
-    </header>
-
-    <div class="pack-selector">
-      <button class="pack-btn active" data-pack="msurg">MSURG</button>
-      <button class="pack-btn" data-pack="surg">SURG</button>
-      <button class="pack-btn" data-pack="lgrid">LGRID</button>
+    <h1>🔪 MSURG Pack Calculator</h1>
+    
+    <!-- Input Utama -->
+    <div class="input-group">
+      <label for="packCount">Jumlah Pack:</label>
+      <input type="number" id="packCount" value="1" min="1">
     </div>
-
-    <div class="input-section">
-      <label for="modal">Modal Pack (WL):</label>
-      <input type="number" id="modal" value="24">
+    
+    <div class="input-group">
+      <label for="packRate">Rate per Pack (WL):</label>
+      <input type="number" id="packRate" value="24" min="1">
     </div>
-
-    <div class="item-grid" id="msurg-pack">
-      <!-- Item MSURG akan di-generate oleh JavaScript -->
-    </div>
-
+    
+    <!-- Tabel Item -->
+    <table id="itemTable">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Qty per Pack</th>
+          <th>Harga (Qty/WL)</th>
+          <th>Total Qty</th>
+          <th>Total WL</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Diisi oleh JavaScript -->
+      </tbody>
+    </table>
+    
+    <!-- Hasil -->
     <div class="results">
-      <h2>Profit: <span id="profit">0</span> WL (<span id="profitPercent">0%</span>)</h2>
+      <h2>Total Modal: <span id="totalModal">24</span> WL</h2>
+      <h2>Total Revenue: <span id="totalRevenue">0</span> WL</h2>
+      <h2>Profit: <span id="totalProfit">0</span> WL (<span id="profitPercent">0%</span>)</h2>
     </div>
   </div>
 
